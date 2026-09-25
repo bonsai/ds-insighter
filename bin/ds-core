@@ -1,0 +1,55 @@
+#!/bin/bash
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+IMPORT_DIR="${DS_IMPORT_DIR:-$ROOT/data/imported}"
+OUT_DIR="${DS_OUT_DIR:-$ROOT/output}"
+
+_usage() {
+  cat <<EOF
+ds-core — Analysis engine (ds-dashboard component 2/3)
+
+Receives sync-db JSONL, analyzes, discovers insights.
+
+Usage: ds-core <command> [args]
+
+Pipeline
+  ds-core ingest             copy sync-data → data/imported/
+  ds-core discover           analyze → output/insights.jsonl + metrics.jsonl
+  ds-core run                ingest + discover (full pipeline)
+
+Environment:
+  DS_SYNC_ROOT=path          sync-db data location
+  DS_IMPORT_DIR=path         imported workspace
+  DS_OUT_DIR=path            output directory
+EOF
+}
+
+_cmd_ingest() {
+  python3 "$ROOT/scripts/ingest.py" \
+    --sync-root "${SC_DATA_ROOT:-$ROOT/../ds-dashboard/sync-data}" \
+    --out "$IMPORT_DIR"
+}
+
+_cmd_discover() {
+  python3 "$ROOT/scripts/discover.py" \
+    --import-dir "$IMPORT_DIR" \
+    --out-dir "$OUT_DIR"
+}
+
+_cmd_run() {
+  _cmd_ingest
+  echo ""
+  _cmd_discover
+  echo ""
+  echo "Done. Output: $OUT_DIR/"
+}
+
+CMD="${1:-help}"; shift || true
+case "$CMD" in
+  ingest)   _cmd_ingest ;;
+  discover) _cmd_discover ;;
+  run)      _cmd_run ;;
+  help|--help|-h) _usage ;;
+  *) echo "Unknown: $CMD"; _usage; exit 1 ;;
+esac

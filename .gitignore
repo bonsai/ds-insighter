@@ -1,0 +1,5 @@
+# ds-core is engine — generated data should not be committed
+data/imported/
+output/
+__pycache__/
+*.pyc
