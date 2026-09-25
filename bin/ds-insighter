@@ -7,16 +7,16 @@ OUT_DIR="${DS_OUT_DIR:-$ROOT/output}"
 
 _usage() {
   cat <<EOF
-ds-core — Analysis engine (ds-dashboard component 2/3)
+ds-insighter — Analysis engine (ds-dashboard component 2/3)
 
 Receives sync-db JSONL, analyzes, discovers insights.
 
-Usage: ds-core <command> [args]
+Usage: ds-insighter <command> [args]
 
 Pipeline
-  ds-core ingest             copy sync-data → data/imported/
-  ds-core discover           analyze → output/insights.jsonl + metrics.jsonl
-  ds-core run                ingest + discover (full pipeline)
+  ds-insighter ingest             copy sync-data → data/imported/
+  ds-insighter discover           analyze → output/insights.jsonl + metrics.jsonl
+  ds-insighter run                ingest + discover (full pipeline)
 
 Environment:
   DS_SYNC_ROOT=path          sync-db data location

@@ -1,4 +1,4 @@
-# ds-core
+# ds-insighter
 
 Analysis engine (component 2/3 of ds-dashboard). Receives sync-db JSONL, discovers insights.
 
@@ -20,9 +20,9 @@ output/metrics.jsonl    — computed metrics
 ## Pipeline
 
 ```bash
-ds-core ingest     # SC_DATA_ROOT → data/imported/
-ds-core discover   # analyze → output/*.jsonl
-ds-core run        # ingest + discover
+ds-insighter ingest     # SC_DATA_ROOT → data/imported/
+ds-insighter discover   # analyze → output/*.jsonl
+ds-insighter run        # ingest + discover
 ```
 
 ## JSONL Schema

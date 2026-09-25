@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""ds-core/discover.py — Generate insights from imported sync-data.
+"""ds-insighter/discover.py — Generate insights from imported sync-data.
 
 Reads: data/imported/import_manifest.jsonl
        data/imported/devices/*.jsonl
@@ -100,7 +100,7 @@ def discover(items, envs):
             "type": "insight",
             "category": "no_devices",
             "severity": "error",
-            "message": "No device data imported. Run ds-core ingest first.",
+            "message": "No device data imported. Run ds-insighter ingest first.",
             "data": {},
             "generated_at": now
         })

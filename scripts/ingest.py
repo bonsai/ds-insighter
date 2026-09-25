@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""ds-core/ingest.py — Ingest sync-db JSONL into analysis workspace.
+"""ds-insighter/ingest.py — Ingest sync-db JSONL into analysis workspace.
 
 Reads:  SC_SYNC_ROOT/.devices/ .memories/ .env/
 Writes: data/imported/{device}_{db}_{table}.jsonl
@@ -10,7 +10,7 @@ import argparse, json, os, shutil, sys
 from pathlib import Path
 
 def sync_dir(src_root, dst_root):
-    """Mirror sync-db JSONL into ds-core workspace (flat for analysis)."""
+    """Mirror sync-db JSONL into ds-insighter workspace (flat for analysis)."""
     src = Path(src_root)
     dst = Path(dst_root)
     dst.mkdir(parents=True, exist_ok=True)
