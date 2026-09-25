@@ -1,6 +1,6 @@
 # ds-insighter
 
-Analysis engine (component 2/3 of ds-dashboard). Receives sync-db JSONL, discovers insights.
+Analysis engine (component 2/3 of kankyou-hub). Receives sync-db JSONL, discovers insights.
 
 ## Interface
 

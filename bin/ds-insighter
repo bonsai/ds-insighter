@@ -7,7 +7,7 @@ OUT_DIR="${DS_OUT_DIR:-$ROOT/output}"
 
 _usage() {
   cat <<EOF
-ds-insighter — Analysis engine (ds-dashboard component 2/3)
+ds-insighter — Analysis engine (kankyou-hub component 2/3)
 
 Receives sync-db JSONL, analyzes, discovers insights.
 
@@ -27,7 +27,7 @@ EOF
 
 _cmd_ingest() {
   python3 "$ROOT/scripts/ingest.py" \
-    --sync-root "${SC_DATA_ROOT:-$ROOT/../ds-dashboard/sync-data}" \
+    --sync-root "${SC_DATA_ROOT:-$ROOT/../kankyou-hub/sync-data}" \
     --out "$IMPORT_DIR"
 }
 

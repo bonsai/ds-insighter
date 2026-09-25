@@ -97,7 +97,7 @@ def sync_dir(src_root, dst_root):
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
-    ap.add_argument("--sync-root", default=os.environ.get("SC_DATA_ROOT", os.path.join(os.path.dirname(__file__), "..", "..", "ds-dashboard", "sync-data")))
+    ap.add_argument("--sync-root", default=os.environ.get("SC_DATA_ROOT", os.path.join(os.path.dirname(__file__), "..", "..", "kankyou-hub", "sync-data")))
     ap.add_argument("--out", default=os.path.join(os.path.dirname(__file__), "..", "data", "imported"))
     args = ap.parse_args()
     sync_dir(args.sync_root, args.out)
